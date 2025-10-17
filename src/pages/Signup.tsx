@@ -3,6 +3,7 @@ import { useRef, useState} from "react";
 import { useNavigate } from "react-router-dom";
 import axios from "axios";
 import { signupSchema } from "@/schemas/Authschema";
+import z from "zod";
 
 
 const Signup = () => {
@@ -10,11 +11,12 @@ const Signup = () => {
     const passwordRef = useRef<HTMLInputElement>(null)
     const [isLoading, setIsLoading] = useState(false)
     const navigate = useNavigate()
-
+    
     const handleSignup = async () => {
         const username = usernameRef.current?.value
         const password = passwordRef.current?.value
 
+        
         const result=signupSchema.safeParse({
             userName: username,
             password: password,
@@ -33,17 +35,18 @@ const Signup = () => {
             })
             
             alert(response.data.message)
-            if (response.status === 200) {
-                navigate("/signin")
+            navigate("/signin")
+        } catch (error: any) {
+            console.error("Signup error:", error)
+            if (error.response?.data?.error) {
+                alert(error.response.data.error)
+            } else {
+                alert("Failed to sign up. Please try again.")
             }
-        } 
-        catch(error){
-            
-            alert("Failed to sign up. Please try again.")
         }
         finally {
             setIsLoading(false)
-        }
+        }   
     }
 
     
