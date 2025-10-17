@@ -29,7 +29,6 @@ const Signin = () => {
             
         } catch (error: any) {
             console.error("Signin error:", error)
-            // Handle different types of errors
             if (error.response?.data?.error) {
                 alert(error.response.data.error)
             } else {
