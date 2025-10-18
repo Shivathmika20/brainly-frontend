@@ -64,8 +64,16 @@ const Signin = () => {
                 </div>
                 <Button onClick={handleSignin} className="bg-blue-500 text-white rounded-md p-2">Signin</Button>
                 
-                    
-               
+                {/* Sign up link */}
+                <div className="text-center text-sm text-gray-600">
+                    Don't have an account?{" "}
+                    <button 
+                        onClick={() => navigate("/signup")}
+                        className="text-blue-500 hover:text-blue-700 underline font-medium"
+                    >
+                        Sign up
+                    </button>
+                </div>
             </div>
         </div>
     )

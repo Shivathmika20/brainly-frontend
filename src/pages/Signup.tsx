@@ -10,6 +10,7 @@ const Signup = () => {
     const usernameRef = useRef<HTMLInputElement>(null)
     const passwordRef = useRef<HTMLInputElement>(null)
     const [isLoading, setIsLoading] = useState(false)
+    
     const navigate = useNavigate()
     
     const handleSignup = async () => {
@@ -88,8 +89,17 @@ const Signup = () => {
                     </ul>
                 </div>
                 <Button onClick={handleSignup} className="bg-blue-500 text-white rounded-md p-2 disabled:opacity-50" disabled={isLoading}>{isLoading ? "Signing up..." : "Signup"}</Button>
-                    
-               
+                
+                {/* Sign in link */}
+                <div className="text-center text-sm text-gray-600">
+                    Already have an account?{" "}
+                    <button 
+                        onClick={() => navigate("/signin")}
+                        className="text-blue-500 hover:text-blue-700 underline font-medium"
+                    >
+                        Sign in
+                    </button>
+                </div>
             </div>
        </div> 
     )
