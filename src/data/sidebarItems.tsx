@@ -1,4 +1,4 @@
-import { Twitter,SquarePlay,File,Link2,Tags,Share2,Plus } from "lucide-react";
+import { Twitter,SquarePlay,File,Link2,Tags } from "lucide-react";
 
 interface SidebarItem{
     icon:React.ReactNode;
@@ -34,15 +34,3 @@ export const sidebarItems:SidebarItem[] = [
     
 ]
 
-export const mainItems:SidebarItem[] = [
-    {
-        icon:<Share2 />,
-        label:"Share Brain",
-        
-    },
-    {
-        icon:<Plus />,
-        label:"Add Content",
-        
-    },
-]
