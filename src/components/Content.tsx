@@ -15,7 +15,7 @@ import { useContent, type ContentType, type Tags} from '../hooks/useContent'
 // import { useNavigate } from 'react-router-dom'
 
 
-interface Icons{
+export interface Icons{
     icon:React.ReactNode;
     type:string;
 }
@@ -39,6 +39,7 @@ const Content = () => {
         }
     }
 
+   
   
     return (
         <div className="p-4">
@@ -62,11 +63,18 @@ const Content = () => {
                                
                                 <CardAction>
                                     <div className='flex items-center gap-2'>
-                                        <Share2 strokeWidth={1.5} size={20} className="cursor-pointer text-purple-600"/>
+                                        <a href={item.link} target="_blank">
+                                        <Share2 strokeWidth={1.5} size={20} className="cursor-pointer text-purple-600" />
+
+                                        </a>
                                         <Trash2 strokeWidth={1.5} size={20} className="cursor-pointer text-purple-600" onClick={() => handleDelete(item._id)} />
                                     </div>
                                 </CardAction>
                             </CardHeader>
+                            <CardContent>
+                                
+                                
+                            </CardContent>
                             <CardFooter>
                                 <div className="flex flex-wrap gap-2">
                                     {item.tagofContent.map((tagId: string, tagIndex: number) => {
