@@ -12,7 +12,11 @@ import {
   import { useState } from "react"
   import axios from "axios"
 
-const Hero = () => {
+interface HeroProps {
+    selectedType: string
+}
+
+const Hero = ({ selectedType }: HeroProps) => {
     const [shareUrl,setShareUrl]=useState<string>("")
     const [copied, setCopied] = useState<boolean>(false)
 
@@ -91,7 +95,7 @@ const Hero = () => {
                 </Button>                    
                 </div> 
             </header>
-            <Content />
+            <Content type={selectedType} />
         </div>
     )
 }

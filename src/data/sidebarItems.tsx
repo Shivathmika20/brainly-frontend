@@ -4,6 +4,7 @@ interface SidebarItem{
     icon:React.ReactNode;
     label:string;
     type:string;
+    
 }
 
 interface Icons{
@@ -15,53 +16,36 @@ export const sidebarItems:SidebarItem[] = [
     {
         icon:<Twitter strokeWidth={1.5} size={20}/>,
         label:"Tweets",
-        type:"twitter",
+        type:"tweets",
         
     },
     {
         icon:<SquarePlay strokeWidth={1.5} size={20}/>,
         label:"Videos",
-        type:"youtube",
+        type:"videos",        
        
     },
     {
         icon:<File strokeWidth={1.5} size={20}/>,
         label:"Documents",
-        type:"pdf",
+        type:"documents",
     },
-    {
-        icon:<Link2 strokeWidth={1.5} size={20}/>,
-        label:"Links",
-        type:"link",
-    },
-    {
-        icon:<Tags strokeWidth={1.5} size={20}/>,
-        label:"Tags",
-        type:"tag",
-        
-    }, 
+    
     
 ]
 
 export const icons:Icons[] = [
     {
         icon:<Twitter strokeWidth={1.5} size={20}/>,
-        type:"twitter",
+        type:"tweets",
     },
     {
         icon:<SquarePlay strokeWidth={1.5} size={20}/>,
-        type:"youtube",
+        type:"videos",
     },
     {
         icon:<File strokeWidth={1.5} size={20}/>,
-        type:"pdf",
+        type:"documents",
     },
-    {
-        icon:<Link2 strokeWidth={1.5} size={20}/>,
-        type:"link",
-    },
-    {
-        icon:<Tags strokeWidth={1.5} size={20}/>,
-        type:"tag",
-    },
+    
 ]

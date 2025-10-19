@@ -23,10 +23,11 @@ export const useContent = () => {
     const [tags, setTags] = useState<Tags[]>([])
     const [loading, setLoading] = useState<boolean>(false)
 
-    const fetchContent = async () => {
+    const fetchContent = async (type: string = '') => {
         setLoading(true)
         try {
-            const res = await axios.get('http://localhost:3000/api/content', {
+            const url = type ? `http://localhost:3000/api/content?type=${type}` : 'http://localhost:3000/api/content'
+            const res = await axios.get(url, {
                 headers: {
                     'Authorization': localStorage.getItem('token')
                 }
@@ -44,9 +45,7 @@ export const useContent = () => {
         }
     }
     
-    useEffect(() => {
-        fetchContent()
-    }, [])
+    
 
     return {
         data,

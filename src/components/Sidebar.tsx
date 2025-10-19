@@ -3,7 +3,12 @@ import SidebarItems from "./SidebarItems";
 import { Button } from "./ui/button";
 import { useNavigate } from "react-router-dom";
 
-const Sidebar = () => {
+interface SidebarProps {
+    onTypeSelect: (type: string) => void
+    selectedType: string
+}
+
+const Sidebar = ({ onTypeSelect, selectedType }: SidebarProps) => {
 
     const navigate = useNavigate();
     const  handleSignOut=()=>{
@@ -18,7 +23,7 @@ const Sidebar = () => {
                     <Brain className="text-purple-600 " size={28} strokeWidth={1.8}/>
                     <span className="text-xl font-bold">Brainly</span>
                 </div>
-                <SidebarItems />
+                <SidebarItems onTypeSelect={onTypeSelect} selectedType={selectedType} />
             </div>
             <div>
                 <Button onClick={handleSignOut} className="mb-8 mx-4 bg-purple-600 text-white font-normal hover:bg-purple-600 flex items-center justify-center hover:cursor-pointer">

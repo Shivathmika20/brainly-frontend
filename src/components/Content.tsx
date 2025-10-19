@@ -11,6 +11,8 @@ import axios from 'axios'
 import {icons} from '../data/sidebarItems'
 import { Share2,Trash2 } from 'lucide-react'
 import { useContent, type ContentType, type Tags} from '../hooks/useContent'
+import { useEffect, useState } from "react"
+
 
 // import { useNavigate } from 'react-router-dom'
 
@@ -22,9 +24,13 @@ export interface Icons{
 
 
 
-const Content = () => {
-    const { data, len, tags, loading } = useContent()
+const Content = ({type}:{type?:string}) => {
+    const { data, len, tags, loading, fetchContent } = useContent()
 
+    useEffect(() => {
+        fetchContent(type  || ""); // fetch content for the selected type
+      }, [type || ""]);
+    
     const handleDelete = async (id: string) => {
         console.log(id)
         try{
@@ -39,7 +45,11 @@ const Content = () => {
         }
     }
 
-   
+    
+    const getIconForType = (type: string) => {
+        const iconObj = icons.find((i: Icons) => i.type === type);
+        return iconObj?.icon || null
+      };
   
     return (
         <div className="p-4">
@@ -50,17 +60,10 @@ const Content = () => {
                     {data.map((item: ContentType, index: number) => (
                         <Card key={index} className="w-full">
                             <CardHeader>
-                                {icons.map((icon: Icons, iconIndex: number) => (
-                                    <div key={iconIndex}>
-                                        {icon.type === item.type && icon.icon ? (
-                                            <CardTitle className='flex items-center gap-2'>
-                                                {icon.icon}
-                                                <span className="truncate">{item.title}</span>
-                                            </CardTitle>
-                                        ) : null}
-                                    </div>
-                                ))}
-                               
+                            <div className="flex items-center gap-2">
+                            {getIconForType(item.type)}
+                            <span className="truncate">{item.title}</span>
+                            </div>
                                 <CardAction>
                                     <div className='flex items-center gap-2'>
                                         <a href={item.link} target="_blank">
