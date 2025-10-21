@@ -1,3 +1,28 @@
+# 🌐 Brainly Frontend
+
+This repository contains the **frontend** for the **Brainly MERN Stack Application** 
+
+The frontend provides a responsive and interactive user interface for exploring, posting, and managing content using the REST APIs served by the **Brainly Backend**.
+
+## 🚀 Tech Stack
+
+| Technology | Description |
+|-------------|--------------|
+| **React.js / Vite** | Frontend framework for building UI |
+| **TypeScript** | Type safety and better developer experience |
+| **Axios** | API communication with backend |
+| **React Router DOM** | Client-side routing |
+| **Tailwind CSS / ShadCN UI** | Modern, responsive styling |
+
+## ⚙️ Environment Variables
+
+Create a `.env` file in your root directory:
+
+For **Vite**:
+```env
+VITE_API_BASE_URL=https://brainly-backend.onrender.com
+```
+
 # React + TypeScript + Vite
 
 This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
@@ -72,4 +97,31 @@ export default defineConfig([
     },
   },
 ])
+```
+1️⃣ Clone the repository
+```
+git clone https://github.com/<your-username>/brainly-frontend.git
+cd brainly-frontend
+```
+
+2️⃣ Install dependencies
+```
+npm install
+```
+
+3️⃣ Run the development server
+```
+For Vite:
+
+npm run dev
+
+
+Frontend runs on 👉 http://localhost:5173
+```
+For Create React App:
+```
+npm start
+
+
+Frontend runs on 👉 http://localhost:3000
 ```
