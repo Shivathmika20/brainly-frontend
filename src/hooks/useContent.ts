@@ -32,7 +32,7 @@ export const useContent = () => {
                     'Authorization': localStorage.getItem('token')
                 }
             })
-            
+            console.log(res.data)
             setData(res.data.contents)
             console.log(res.data)
             setLen(res.data.length)

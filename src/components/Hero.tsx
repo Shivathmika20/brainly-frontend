@@ -11,7 +11,7 @@ import {
   } from "@/components/ui/dialog"
   import { useState } from "react"
   import axios from "axios"
-
+import { ContentModel } from "./ContentModel"
 interface HeroProps {
     selectedType: string
 }
@@ -19,6 +19,7 @@ interface HeroProps {
 const Hero = ({ selectedType }: HeroProps) => {
     const [shareUrl,setShareUrl]=useState<string>("")
     const [copied, setCopied] = useState<boolean>(false)
+    const[isOpen,setIsOpen]=useState<boolean>(false)
 
     const handleOnShare = async () => {
         try {
@@ -49,6 +50,31 @@ const Hero = ({ selectedType }: HeroProps) => {
         } catch (error) {
             console.error('Failed to copy: ', error)
             alert('Failed to copy to clipboard')
+        }
+    }
+
+    const handleContentAdded = async (contentData: {title: string, type: string, link: string, tags: string[]}) => {
+        
+        try {
+            const response = await axios.post('http://localhost:3000/api/content', {
+                title: contentData.title,
+                link: contentData.link,
+                type: contentData.type,
+                tags: contentData.tags
+            }, {
+                headers: {
+                    'Authorization': localStorage.getItem('token')
+                }
+            })
+            
+            console.log('Content added successfully:', response.data)
+            alert('Content added successfully!')
+            
+    
+            
+        } catch (error: any) {
+            console.error('Error adding content:', error)
+            alert(error.response?.data?.error || 'Failed to add content')
         }
     }
 
@@ -88,11 +114,19 @@ const Hero = ({ selectedType }: HeroProps) => {
                             )}
                         </div>
                     </DialogContent>
-                </Dialog>    
-                <Button className="bg-purple-600 font-normal hover:bg-transparent hover:border-2 hover:border-purple-600 hover:text-purple-600 hover:scale-105 transition-all duration-300">
-                     <Plus strokeWidth={2.5} size={20}/>
-                         Add Content
-                </Button>                    
+                </Dialog>   
+
+                <Button className="bg-purple-600 font-normal hover:bg-transparent hover:border-2 hover:border-purple-600 hover:text-purple-600 hover:scale-105 transition-all duration-300"
+                onClick={()=>setIsOpen(true)}
+                >
+                    <Plus strokeWidth={2.5} size={20}/>
+                        Add Content
+                </Button>  
+                <ContentModel 
+                    open={isOpen}
+                    onOpenChange={setIsOpen}
+                    onContentAdded={handleContentAdded}
+                />
                 </div> 
             </header>
             <Content type={selectedType} />
