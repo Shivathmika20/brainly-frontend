@@ -351,7 +351,10 @@ const Content = ({type}:{type?:string}) => {
     const { data, len, tags, loading, fetchContent } = useContent()
 
     useEffect(() => {
-        fetchContent(type  || ""); // fetch content for the selected type
+        fetchContent(type  || "");
+        setTimeout(() => {
+            fetchContent(type  || "");
+        }, 1000); // fetch content for the selected type
       }, [type || ""]);
     
     const handleDelete = async (id: string) => {
@@ -362,6 +365,8 @@ const Content = ({type}:{type?:string}) => {
                     'Authorization': localStorage.getItem('token')
                 }
             })
+            fetchContent(type  || ""); // fetch content for the selected type
+            alert('Content deleted successfully')
         } catch (error: any) {
             console.error('Error deleting content:', error)
             alert(error.response.data.error)

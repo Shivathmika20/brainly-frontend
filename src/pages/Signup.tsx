@@ -88,14 +88,14 @@ const Signup = () => {
                         <li>• At least one special character (@$!%*?&)</li>
                     </ul>
                 </div>
-                <Button onClick={handleSignup} className="bg-blue-500 text-white rounded-md p-2 disabled:opacity-50" disabled={isLoading}>{isLoading ? "Signing up..." : "Signup"}</Button>
+                <Button onClick={handleSignup} className="bg-purple-600 tex-white hover:bg-purple-500 rounded-md p-2" disabled={isLoading}>{isLoading ? "Signing up..." : "Signup"}</Button>
                 
                 {/* Sign in link */}
                 <div className="text-center text-sm text-gray-600">
                     Already have an account?{" "}
                     <button 
                         onClick={() => navigate("/signin")}
-                        className="text-blue-500 hover:text-blue-700 underline font-medium"
+                        className="text-purple-600 hover:text-purple-700 underline font-medium"
                     >
                         Sign in
                     </button>

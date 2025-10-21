@@ -62,14 +62,14 @@ const Signin = () => {
                         className="border-2 border-gray-500 rounded-md p-2"
                     />
                 </div>
-                <Button onClick={handleSignin} className="bg-blue-500 text-white rounded-md p-2">Signin</Button>
+                <Button onClick={handleSignin} className="bg-purple-600 tex-white hover:bg-purple-500 rounded-md p-2">Signin</Button>
                 
                 {/* Sign up link */}
                 <div className="text-center text-sm text-gray-600">
                     Don't have an account?{" "}
                     <button 
                         onClick={() => navigate("/signup")}
-                        className="text-blue-500 hover:text-blue-700 underline font-medium"
+                        className="text-purple-600 hover:text-purple-700 underline font-medium"
                     >
                         Sign up
                     </button>
