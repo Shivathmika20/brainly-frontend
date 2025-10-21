@@ -10,6 +10,7 @@ import {icons} from '../data/sidebarItems'
 import { Share2,Trash2, ExternalLink, FileText, Play, Image as ImageIcon } from 'lucide-react'
 import { useContent, type ContentType, type Tags} from '../hooks/useContent'
 import { useEffect, useState } from "react"
+import { BACKEND_URL } from "../../config"
 
 
 // import { useNavigate } from 'react-router-dom'
@@ -102,7 +103,6 @@ const LinkPreviewComponent = ({ url }: { url: string }) => {
 };
 
 
-// Integrated preview components
 const ContentPreview = ({ url }: { url: string }) => {
     if (!url || url.trim() === '') {
         return (
@@ -352,15 +352,13 @@ const Content = ({type}:{type?:string}) => {
 
     useEffect(() => {
         fetchContent(type  || "");
-        setTimeout(() => {
-            fetchContent(type  || "");
-        }, 1000); // fetch content for the selected type
+      
       }, [type || ""]);
     
     const handleDelete = async (id: string) => {
         console.log(id)
         try{
-            await axios.delete(`http://localhost:3000/api/content/${id}`, {
+            await axios.delete(`${BACKEND_URL}/api/content/${id}`, {
                 headers: {
                     'Authorization': localStorage.getItem('token')
                 }

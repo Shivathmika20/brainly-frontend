@@ -12,6 +12,8 @@ import {
   import { useState } from "react"
   import axios from "axios"
 import { ContentModel } from "./ContentModel"
+import { BACKEND_URL } from "../../config"
+
 interface HeroProps {
     selectedType: string
 }
@@ -23,7 +25,7 @@ const Hero = ({ selectedType }: HeroProps) => {
 
     const handleOnShare = async () => {
         try {
-            const response = await axios.post("http://localhost:3000/api/share", 
+            const response = await axios.post(`${BACKEND_URL}/api/share`, 
                 { share: true },
                 {
                     headers: {
@@ -56,7 +58,7 @@ const Hero = ({ selectedType }: HeroProps) => {
     const handleContentAdded = async (contentData: {title: string, type: string, link: string, tags: string[]}) => {
         
         try {
-            const response = await axios.post('http://localhost:3000/api/content', {
+            const response = await axios.post(`${BACKEND_URL}/api/content`, {
                 title: contentData.title,
                 link: contentData.link,
                 type: contentData.type,

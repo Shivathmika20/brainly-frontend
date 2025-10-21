@@ -1,6 +1,7 @@
 import { useState, useEffect } from 'react'
 import { useParams } from 'react-router-dom'
 import axios from 'axios'
+import { BACKEND_URL } from "../../config"
 
 interface ContentItem {
     _id: string
@@ -28,7 +29,7 @@ const SharedContent = () => {
             
             try {
                 setLoading(true)
-                const response = await axios.get(`http://localhost:3000/api/share/${sharedLink}`)
+                const response = await axios.get(`${BACKEND_URL}/api/share/${sharedLink}`)
                 console.log('API Response:', response.data)
                 setContent(response.data.content || [])
             } catch (err: any) {

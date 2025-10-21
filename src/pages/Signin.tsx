@@ -2,6 +2,7 @@ import { Button } from "@/components/ui/button"
 import {useRef} from "react"
 import axios from "axios"
 import { useNavigate } from "react-router-dom"
+import { BACKEND_URL } from "../../config"
 
 
 const Signin = () => {
@@ -19,7 +20,7 @@ const Signin = () => {
         }
         
         try {
-            const response = await axios.post("http://localhost:3000/api/auth/signin", {
+            const response = await axios.post(`${BACKEND_URL}/api/auth/signin`, {
                 userName: username,
                 password: password,
             })

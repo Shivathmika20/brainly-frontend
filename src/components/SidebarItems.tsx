@@ -8,9 +8,6 @@ interface SidebarItemsProps {
 
 const SidebarItems = ({ onTypeSelect, selectedType }: SidebarItemsProps) => {
   
-    
-    
-
     const handleTypeClick = (type: string) => {
         onTypeSelect(type)
     }

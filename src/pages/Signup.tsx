@@ -3,7 +3,8 @@ import { useRef, useState} from "react";
 import { useNavigate } from "react-router-dom";
 import axios from "axios";
 import { signupSchema } from "@/schemas/Authschema";
-import z from "zod";
+
+import { BACKEND_URL } from "../../config"
 
 
 const Signup = () => {
@@ -30,7 +31,7 @@ const Signup = () => {
 
         setIsLoading(true)
         try {
-            const response = await axios.post("http://localhost:3000/api/auth/signup", {
+            const response = await axios.post(`${BACKEND_URL}/api/auth/signup`, {
                 userName: username,
                 password: password,
             })

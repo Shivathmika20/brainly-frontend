@@ -1,5 +1,6 @@
 import { useState, useEffect } from 'react'
 import axios from 'axios'
+import { BACKEND_URL } from "../../config"
 
 export interface ContentType {
     _id: string,
@@ -26,7 +27,7 @@ export const useContent = () => {
     const fetchContent = async (type: string = '') => {
         setLoading(true)
         try {
-            const url = type ? `http://localhost:3000/api/content?type=${type}` : 'http://localhost:3000/api/content'
+            const url = type ? `${BACKEND_URL}/api/content?type=${type}` : `${BACKEND_URL}/api/content`
             const res = await axios.get(url, {
                 headers: {
                     'Authorization': localStorage.getItem('token')
