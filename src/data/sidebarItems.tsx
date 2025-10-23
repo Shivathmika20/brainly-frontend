@@ -1,4 +1,4 @@
-import { Twitter,SquarePlay,File,Link2,Tags } from "lucide-react";
+import { Twitter,SquarePlay,File } from "lucide-react";
 
 interface SidebarItem{
     icon:React.ReactNode;

@@ -8,7 +8,7 @@ import {
     
   } from "@/components/ui/dialog"
 import { Button } from "./ui/button"
-  import { useRef, useState } from "react"
+  import { useRef } from "react"
 import { Label } from "./ui/label"
 import { Input } from "./ui/input"
 interface ContentModelProps {
@@ -18,7 +18,7 @@ interface ContentModelProps {
 }
 
 export const ContentModel = ({open, onOpenChange, onContentAdded}: ContentModelProps) => {
-    const [formData,setFormData]=useState<{title:string,type:string,link:string,tags:string[]}>({title:"",type:"",link:"",tags:[]})
+    // Removed unused formData state since we're using refs directly
     const titleRef=useRef<HTMLInputElement>(null)
     const typeRef=useRef<HTMLSelectElement>(null)
     const linkRef=useRef<HTMLInputElement>(null)
