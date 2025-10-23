@@ -17,9 +17,10 @@ A modern and responsive frontend application for the Brainly project built with 
 - Node.js (v16 or higher)
 - npm or yarn package manager
 
-##⚙️ Environment Variables
+## ⚙️ Environment Variables
+
 Create a .env file in your root directory:
-```
+```bash
 For Vite:
 
 VITE_API_BASE_URL=your_backend_url
